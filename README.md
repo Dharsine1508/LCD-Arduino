@@ -46,12 +46,48 @@ The 16×2 LCD is interfaced with the Arduino Uno using
 - **10K potentiometer:** Adjusts the LCD contrast.
 - **Breadboard and jumper wires:** Connect the components.
 - **USB cable:** Powers and programs the Arduino Uno.
+CODE
+#include <LiquidCrystal.h>
 
-💻 Technologies
+LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
 
-- Arduino C++
-- Arduino IDE
-- LiquidCrystal library
+struct Screen {
+  const char* line1;
+  const char* line2;
+  unsigned long duration;
+};
+
+Screen screens[] = {
+  {"WAVIN' FLAG", "K'NAAN"},
+  {"When I get", "older"},
+  {"I will be", "stronger"},
+  {"They'll call", "me freedom"},
+  {"Just like a", "wavin' flag"},
+  {"And then it", "goes back"},
+  {"And then it", "goes back"}
+};
+
+const int screenCount =
+  sizeof(screens) / sizeof(screens[0]);
+
+void setup() {
+  lcd.begin(16, 2);
+  lcd.clear();
+}
+
+void loop() {
+  for (int i = 0; i < screenCount; i++) {
+    lcd.clear();
+
+    lcd.setCursor(0, 0);
+    lcd.print(screens[i].line1);
+
+    lcd.setCursor(0, 1);
+    lcd.print(screens[i].line2);
+
+    delay(1200);  // 1.2 seconds per screen
+  }
+}
 
 🚀 What I Learned
 
