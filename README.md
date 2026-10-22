@@ -39,10 +39,7 @@ The 16×2 LCD is interfaced with the Arduino Uno using
 - **Breadboard and jumper wires:** Connect the components.
 - **USB cable:** Powers and programs the Arduino Uno.
 
-### Circuit Diagram
-
-![Arduino Uno and 16x2 LCD circuit diagram](images/lcd-circuit.png)
-💻 Technologies
+Technologies 
 
 - Arduino C++
 - Arduino IDE
