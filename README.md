@@ -1,45 +1,59 @@
+Arduino LCD Lyrics Display 🎵
 
-CODE
-#include <LiquidCrystal.h>
+A simple Arduino-based project that displays short song lyrics on a 16×2 LCD using an Arduino Uno.
 
-LiquidCrystal lcd(7, 8, 9, 10, 11, 12);
+This project uses the LiquidCrystal library to display text across two lines, with adjustable delays to control the speed of each screen transition. The display cycles through the text continuously, creating a small music-inspired electronics project.
 
-struct Screen {
-  const char* line1;
-  const char* line2;
-  unsigned long duration;
-};
+🛠️ Components Used
 
-Screen screens[] = {
-  {"WAVIN' FLAG", "K'NAAN"},
-  {"When I get", "older"},
-  {"I will be", "stronger"},
-  {"They'll call", "me freedom"},
-  {"Just like a", "wavin' flag"},
-  {"And then it", "goes back"},
-  {"And then it", "goes back"}
-};
+- Arduino Uno
+- 16×2 LCD display
+- 10K potentiometer for contrast adjustment
+- Breadboard and jumper wires
+- USB cable for programming and power
 
-const int screenCount =
-  sizeof(screens) / sizeof(screens[0]);
+## 🔌 Circuit Diagram & Pin Connections
 
-void setup() {
-  lcd.begin(16, 2);
-  lcd.clear();
-}
+The 16×2 LCD is interfaced with the Arduino Uno using
+4-bit communication mode.
 
-void loop() {
-  for (int i = 0; i < screenCount; i++) {
-    lcd.clear();
+### Pin Mapping
 
-    lcd.setCursor(0, 0);
-    lcd.print(screens[i].line1);
+| LCD Pin | Function | Arduino Connection |
+|---------|----------|-------------------|
+| 1 | VSS | GND |
+| 2 | VDD | 5V |
+| 3 | VO | Potentiometer middle pin |
+| 4 | RS | Digital Pin 7 |
+| 5 | RW | GND |
+| 6 | Enable (E) | Digital Pin 8 |
+| 11 | Data (D4) | Digital Pin 9 |
+| 12 | Data (D5) | Digital Pin 10 |
+| 13 | Data (D6) | Digital Pin 11 |
+| 14 | Data (D7) | Digital Pin 12 |
+| 15 | Backlight (+) | 5V, with suitable current limiting |
+| 16 | Backlight (-) | GND |
 
-    lcd.setCursor(0, 1);
-    lcd.print(screens[i].line2);
+### Additional Components
+- **10K potentiometer:** Adjusts the LCD contrast.
+- **Breadboard and jumper wires:** Connect the components.
+- **USB cable:** Powers and programs the Arduino Uno.
 
-    delay(1200);  // 1.2 seconds per screen
-  }
-}
+### Circuit Diagram
+
+![Arduino Uno and 16x2 LCD circuit diagram](images/lcd-circuit.png)
+💻 Technologies
+
+- Arduino C++
+- Arduino IDE
+- LiquidCrystal library
+
+🚀 What I Learned
+
+- Interfacing a 16×2 LCD with Arduino
+- Using digital pins to control an LCD
+- Structuring text using C++ structures and arrays
+- Controlling display timing with delays
 
 This project is part of my hands-on learning journey in Electronics and Communication Engineering (ECE), combining programming with hardware interfacing.
+
